@@ -1,17 +1,9 @@
-# hello-python
-This is a barebones resin.io project to demonstrate running python code. 
-Currently it is targeting a raspberry pi and builds upon a debian wheezy base image. However, it is easy to 
-change this to target any of the other targeted platforms supported by resin.io, all that you need to do is 
-change the line:
-```
-FROM resin/rpi-raspbian:jessie
-```
-to any of the base OS images from the [resin.io docker hub](https://registry.hub.docker.com/repos/resin/).
+#resin.io + python + raspberry pi camera module
 
-For an explination on how [resin.io](https://resin.io/) uses Dockerfiles check out the [Dockerfile guide](http://docs.resin.io/#/pages/dockerfile.md)
- . Additionally if you want to learn how to optimise your Dockerfile look over [here](http://docs.resin.io/#/pages/build-optimisation.md)
+This is a simple app that demonstrates how to get started with the raspberry pi camera module. All it does is snap one photo and then stores it in the /data directory on the pi. 
 
+You will need to make some changes to the downloaded RPI/RPI2 image to enable the camera, instructions here -> [http://docs.resin.io/#/pages/hardware/i2c-and-spi.md#raspberry-pi-camera-module](http://docs.resin.io/#/pages/hardware/i2c-and-spi.md#raspberry-pi-camera-module)
 
-__Note:__ Obviously apt package manager will only work in Debian environments.
+The /data directory allows the data, in this case the image, to presist between code deployments with [resin.io](https://resin.io/).  It then just sits in an infinite loop, this loop allows you to use the web terminal session to poke around on the pi itself and see that your photo was successfully saved in the /data directory.
 
-
+This example makes use of the awesome [picamera](http://picamera.readthedocs.org/en/release-1.8/) python module, which natively controls the camera module and does not depend on raspistill.
