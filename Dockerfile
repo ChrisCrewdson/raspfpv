@@ -9,6 +9,5 @@ RUN pip install picamera
 # add the root dir to the /app dir in the container env
 ADD . /app
 
-# tell python to execute demo.py
-CMD modprobe bcm2835-v4l2 && python /app/demo.py
-
+# tell python to execute stream.py
+CMD modprobe bcm2835-v4l2 && python /app/stream.py
